@@ -1,24 +1,24 @@
-(defmodule CreateUserProfile)
+(defmodule createProfile)
 ;Reglas definidas para ClassifyUser
 (deftemplate usuario
     (slot edad (type NUMBER))
-    (slot tiempoJuego(type NUMBER)(allowed-values poco medio mucho))
+    (slot tiempoJuego(type SYMBOL)(allowed-values poco medio mucho))
     (slot dificultad(type SYMBOL)(allowed-values facil medio dificil))
     (slot aficion(type SYMBOL)(allowed-values salud, hogar, viajar, puzzles))
     (slot presupuesto (type NUMBER))
-    (slot NumeroJugadores(type SYMBOL)(allowed-values uno, dos, mas de dos))
+    (slot numeroJugadores(type SYMBOL)(allowed-values uno, dos, masDos))
 )
 
-(defrule CreateUserProfile::Familia_1Jugador_PocoTiempo
-    (usuario {aficion == hogar} {tiempoJuego == poco} {NumeroJugadores == uno})
-    	=>
-    (assert (TipoJugador Familia_1_poco))
-    )
+(defrule createProfile::Fam_1_poco
+	(numeroJugadores == uno)
+    =>
+    (assert(TipoJugador Fam_uno_poco)) 
+)
+ 
 
-
-(defmodule ClassifyGames)
+;(defmodule ClassifyGames)
 ;Reglas definidas para ClassifyGames
 
 
-(defmodule MatchUsersAndGames)
+;(defmodule MatchUsersAndGames)
 ;Reglas definidas para MatchUsersAndGames
