@@ -11,7 +11,8 @@ public class App {
 	public static void main(String[] args) throws JessException {
 		String ficheroReglas = "recommendations.clp";
 		Rete r = new Rete();
-		
+		String tmp;
+		double inputDouble;
 		int inputInt = 0;
 		String inputStr = "";
 		Scanner in = new Scanner(System.in);
@@ -33,29 +34,33 @@ public class App {
 		
 		Fact f = new Fact("usuario", r); 
 		
-		//System.out.println("Cuantos años tienes?: ");
-		//inputInt = in.nextInt();
-		f.setSlotValue("edad", new Value(10, RU.INTEGER)); 
+		System.out.println("Cuantos años tienes?: ");
+		inputInt = in.nextInt();
+		f.setSlotValue("edad", new Value(inputInt, RU.INTEGER)); 
 		
-		//System.out.println("Cuanto tiempo quieres dedicarle al juego?(poco, medio, mucho): ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("tiempoJuego", new Value("poco", RU.SYMBOL));
+		tmp = in.nextLine();
 		
-		//System.out.println("De que dificultad quieres el juego?(facil, medio, dificil): ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("dificultad", new Value("facil", RU.SYMBOL));
+		System.out.println("Cuanto tiempo quieres dedicarle al juego?(poco, medio, mucho): ");
+		inputStr = in.nextLine();
+		f.setSlotValue("tiempoJuego", new Value(inputStr, RU.SYMBOL));
 		
-		//System.out.println("Elige tu aficción de entre las siguientes(): ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("aficion", new Value("hogar", RU.SYMBOL));
+		System.out.println("De que dificultad quieres el juego?(facil, medio, dificil): ");
+		inputStr = in.nextLine();
+		f.setSlotValue("dificultad", new Value(inputStr, RU.SYMBOL));
 		
-		//System.out.println("Cual es tu presupuesto para el juego?: ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("presupuesto", new Value(100, RU.INTEGER));
+		System.out.println("Elige tu aficción de entre las siguientes(): ");
+		inputStr = in.nextLine();
+		f.setSlotValue("aficion", new Value(inputStr, RU.SYMBOL));
 		
-		//System.out.println("De cuantos jugadores quieres el juego?(uno, dos, MasDeDos): ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("numeroJugadores", new Value("uno", RU.SYMBOL));
+		System.out.println("Cual es tu presupuesto para el juego?: ");
+		inputDouble = in.nextDouble();
+		f.setSlotValue("presupuesto", new Value(inputDouble, RU.INTEGER));
+		
+		tmp = in.nextLine();
+		
+		System.out.println("De cuantos jugadores quieres el juego?(uno, dos, MasDeDos): ");
+		inputStr = in.nextLine();
+		f.setSlotValue("numeroJugadores", new Value(inputStr, RU.SYMBOL));
 		
 		r.assertFact(f);
 		
@@ -63,12 +68,12 @@ public class App {
 		r.eval("(rules)");
 		
 		
-		r.setFocus("ClassifyGames");
-		r.run();
+		//r.setFocus("ClassifyGames");
+		//r.run();
 		
 		
-		r.setFocus("MatchUsersAndGames");
-		r.run();
+		//r.setFocus("MatchUsersAndGames");
+		//r.run();
 	
 	}
 

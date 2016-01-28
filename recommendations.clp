@@ -16,7 +16,7 @@
 )
  
 
-(defmodule ClassifyGames)
+;(defmodule ClassifyGames)
 ;Reglas definidas para ClassifyGames
 (deftemplate juego
 		(slot nombre (type SYMBOL))
@@ -26,7 +26,5 @@
     	(slot precio (type NUMBER))
 )
 
-
-
-(defmodule MatchUsersAndGames)
+;(defmodule MatchUsersAndGames)
 ;Reglas definidas para MatchUsersAndGames
