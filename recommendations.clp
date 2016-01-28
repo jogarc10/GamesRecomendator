@@ -63,7 +63,11 @@
         =>
     (assert (TipoBuscado hogar))
 )
-
+/*
+(defrule createProfile::createTipoBuscado
+    (assert (TipoBuscado ?aficion))
+)
+*/
 (defrule createProfile::Deporte_aficcion
     (usuario {aficion == salud})
         =>
