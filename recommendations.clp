@@ -10,9 +10,9 @@
 )
 
 (defrule createProfile::time
-    (usuario (tiempoJuego == poco))
-    (usuario (tiempoJuego == medio))
-    (usuario (tiempoJuego == mucho))
+    (usuario {tiempoJuego == poco})
+    (usuario {tiempoJuego == medio})
+    (usuario {tiempoJuego == mucho})
     =>
     (assert (Tiempo Poco))
     (assert (Tiempo medio))
