@@ -22,7 +22,7 @@
     (usuario {aficion == hogar})
     (usuario {numeroJugadores == dos})
     	=>
-    (assert (TipoJugador Fam_1_Poco))
+    (assert (TipoJugador Fam_2_Poco))
 )
 
 (defrule createProfile::Fam_MasDos_Poco
@@ -30,10 +30,56 @@
     (usuario {aficion == hogar})
     (usuario {numeroJugadores == MasDeDos})
     	=>
+    (assert (TipoJugador Fam_MasDos_Poco))
+)
+
+(defrule createProfile::Fam_1_Medio
+    (usuario {tiempoJuego == medio})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == uno})
+    	=>
     (assert (TipoJugador Fam_1_Poco))
 )
 
+(defrule createProfile::Fam_2_Medio
+    (usuario {tiempoJuego == medio})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == dos})
+    	=>
+    (assert (TipoJugador Fam_2_Poco))
+)
 
+(defrule createProfile::Fam_MasDos_Medio
+    (usuario {tiempoJuego == medio})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == MasDeDos})
+    	=>
+    (assert (TipoJugador Fam_MasDos_Poco))
+)
+
+(defrule createProfile::Fam_1_Mucho
+    (usuario {tiempoJuego == mucho})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == uno})
+    	=>
+    (assert (TipoJugador Fam_1_Poco))
+)
+
+(defrule createProfile::Fam_2_Mucho
+    (usuario {tiempoJuego == mucho})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == dos})
+    	=>
+    (assert (TipoJugador Fam_2_Poco))
+)
+
+(defrule createProfile::Fam_MasDos_Mucho
+    (usuario {tiempoJuego == mucho})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == MasDeDos})
+    	=>
+    (assert (TipoJugador Fam_MasDos_Poco))
+)
  
 
 ;(defmodule ClassifyGames)
