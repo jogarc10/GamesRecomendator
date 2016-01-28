@@ -29,45 +29,46 @@ public class App {
 		r.setFocus("createProfile");
 		r.run();
 		
-		//System.out.println("Do you want exit: ");
-		//inputInt = in.nextline();
 		//r.eval("deftemplate usuario (slot edad (type NUMBER)) (slot tiempoJuego(type NUMBER)(allowed-values poco medio mucho)) (slot dificultad(type SYMBOL)(allowed-values facil medio dificil)) (slot aficion(type SYMBOL)(allowed-values salud, hogar, viajar, puzzles)) (slot presupuesto (type NUMBER)) (slot NumeroJugadores(type SYMBOL)(allowed-values uno, dos, mas de dos))");
 		
 		Fact f = new Fact("usuario", r); 
 		
-		//System.out.println("What's your age?: ");
+		//System.out.println("Cuantos años tienes?: ");
 		//inputInt = in.nextInt();
 		f.setSlotValue("edad", new Value(10, RU.INTEGER)); 
 		
-		//System.out.println("What's your age?: ");
+		//System.out.println("Cuanto tiempo quieres dedicarle al juego?(poco, medio, mucho): ");
 		//inputStr = in.nextLine();
 		f.setSlotValue("tiempoJuego", new Value("poco", RU.SYMBOL));
 		
-		f.setSlotValue("dificultad", new Value("dificil", RU.SYMBOL));
+		//System.out.println("De que dificultad quieres el juego?(facil, medio, dificil): ");
+		//inputStr = in.nextLine();
+		f.setSlotValue("dificultad", new Value("facil", RU.SYMBOL));
 		
+		//System.out.println("Elige tu aficción de entre las siguientes(): ");
+		//inputStr = in.nextLine();
 		f.setSlotValue("aficion", new Value("hogar", RU.SYMBOL));
 		
+		//System.out.println("Cual es tu presupuesto para el juego?: ");
+		//inputStr = in.nextLine();
 		f.setSlotValue("presupuesto", new Value(100, RU.INTEGER));
 		
+		//System.out.println("De cuantos jugadores quieres el juego?(uno, dos, MasDeDos): ");
+		//inputStr = in.nextLine();
 		f.setSlotValue("numeroJugadores", new Value("uno", RU.SYMBOL));
 		
 		r.assertFact(f);
 		
-		//r.eval("(reset)");
 		r.eval("(facts)");
 		r.eval("(rules)");
-		r.eval("(facts)");
-		
-		//r.setFocus("ClassifyGames");
-		//r.run();
 		
 		
+		r.setFocus("ClassifyGames");
+		r.run();
 		
 		
-		
-		
-		//r.setFocus("MatchUsersAndGames");
-		//r.run();
+		r.setFocus("MatchUsersAndGames");
+		r.run();
 	
 	}
 

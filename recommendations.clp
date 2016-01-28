@@ -6,7 +6,7 @@
     (slot dificultad(type SYMBOL)(allowed-values facil medio dificil))
     (slot aficion(type SYMBOL)(allowed-values salud, hogar, viajar, puzzles))
     (slot presupuesto (type NUMBER))
-    (slot numeroJugadores(type SYMBOL)(allowed-values uno, dos, masDos))
+    (slot numeroJugadores(type SYMBOL)(allowed-values uno, dos, MasDeDos))
 )
 
 (defrule createProfile::Fam_1_poco
@@ -16,9 +16,17 @@
 )
  
 
-;(defmodule ClassifyGames)
+(defmodule ClassifyGames)
 ;Reglas definidas para ClassifyGames
+(deftemplate juego
+		(slot nombre (type SYMBOL))
+    	(slot numeroJugadores(Type SYMBOL)(allowed-values uno, dos, MasDeDos))
+    	(slot dificultad (type SYMBOL)(allowed-values facil medio dificil))
+    	(slot tiempoJuego (type SYMBOL)(allowed-values poco medio mucho))
+    	(slot precio (type NUMBER))
+)
 
 
-;(defmodule MatchUsersAndGames)
+
+(defmodule MatchUsersAndGames)
 ;Reglas definidas para MatchUsersAndGames
