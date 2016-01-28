@@ -35,7 +35,7 @@ public class App {
 		
 		//System.out.println("Cuantos años tienes?: ");
 		//inputInt = in.nextInt();
-		f.setSlotValue("edad", new Value(10, RU.INTEGER)); 
+		f.setSlotValue("edad", new Value(20, RU.INTEGER)); 
 		
 		//tmp = in.nextLine();
 		
@@ -65,7 +65,6 @@ public class App {
 		
 		r.run();
 		r.eval("(facts)");
-		r.eval("(rules)");
 		
 		
 		//r.setFocus("ClassifyGames");

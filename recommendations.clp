@@ -9,78 +9,87 @@
     (slot numeroJugadores(type SYMBOL)(allowed-values uno, dos, MasDeDos))
 )
 
-(defrule createProfile::Fam_1_Poco
+(defrule createProfile::Poco_tiempo
     (usuario {tiempoJuego == poco})
-    (usuario {aficion == hogar})
+    	=>
+    (assert (Tiempo Poco))
+)
+
+(defrule createProfile::Medio_tiempo
+    (usuario {tiempoJuego == medio})
+    	=>
+    (assert (Tiempo medio))
+)
+
+(defrule createProfile::Mucho_tiempo
+    (usuario {tiempoJuego == mucho})
+    	=>
+    (assert (Tiempo mucho))
+)
+
+(defrule createProfile::Un_Jugadores
     (usuario {numeroJugadores == uno})
     	=>
-    (assert (TipoJugador Fam_1_Poco))
+    (assert (Jugadores Uno))
 )
 
-(defrule createProfile::Fam_2_Poco
-    (usuario {tiempoJuego == poco})
-    (usuario {aficion == hogar})
+(defrule createProfile::Dos_Jugadores
     (usuario {numeroJugadores == dos})
     	=>
-    (assert (TipoJugador Fam_2_Poco))
+    (assert (Jugadores dos))
 )
 
-(defrule createProfile::Fam_MasDos_Poco
-    (usuario {tiempoJuego == poco})
-    (usuario {aficion == hogar})
-    (usuario {numeroJugadores == MasDeDos})
+(defrule createProfile::MasDos_Jugadores
+    (usuario {numeroJugadores == MasDos})
     	=>
-    (assert (TipoJugador Fam_MasDos_Poco))
+    (assert (Jugadores MasDos))
 )
 
-(defrule createProfile::Fam_1_Medio
-    (usuario {tiempoJuego == medio})
+(defrule createProfile::Familia_aficcion
     (usuario {aficion == hogar})
-    (usuario {numeroJugadores == uno})
     	=>
-    (assert (TipoJugador Fam_1_Poco))
+    (assert (TipoBuscado Familia))
 )
 
-(defrule createProfile::Fam_2_Medio
-    (usuario {tiempoJuego == medio})
-    (usuario {aficion == hogar})
-    (usuario {numeroJugadores == dos})
+(defrule createProfile::Deporte_aficcion
+    (usuario {aficion == salud})
     	=>
-    (assert (TipoJugador Fam_2_Poco))
+    (assert (TipoBuscado Deporte))
 )
 
-(defrule createProfile::Fam_MasDos_Medio
-    (usuario {tiempoJuego == medio})
-    (usuario {aficion == hogar})
-    (usuario {numeroJugadores == MasDeDos})
+(defrule createProfile::Aventura_aficcion
+    (usuario {aficion == viajar})
     	=>
-    (assert (TipoJugador Fam_MasDos_Poco))
+    (assert (TipoBuscado Aventura))
 )
 
-(defrule createProfile::Fam_1_Mucho
-    (usuario {tiempoJuego == mucho})
-    (usuario {aficion == hogar})
-    (usuario {numeroJugadores == uno})
+(defrule createProfile::Inteligencia_aficcion
+    (usuario {aficion == puzzles})
     	=>
-    (assert (TipoJugador Fam_1_Poco))
+    (assert (TipoBuscado Inteligencia))
 )
 
-(defrule createProfile::Fam_2_Mucho
-    (usuario {tiempoJuego == mucho})
-    (usuario {aficion == hogar})
-    (usuario {numeroJugadores == dos})
+(defrule createProfile::Mas18_Edad
+    (usuario {edad > 18})
     	=>
-    (assert (TipoJugador Fam_2_Poco))
+    (assert (Edad Mas18))
+    (assert (Edad Mas13))
+    (assert (Edad TP))
 )
 
-(defrule createProfile::Fam_MasDos_Mucho
-    (usuario {tiempoJuego == mucho})
-    (usuario {aficion == hogar})
-    (usuario {numeroJugadores == MasDeDos})
+(defrule createProfile::Mas13_Edad
+    (usuario {edad > 13})
     	=>
-    (assert (TipoJugador Fam_MasDos_Poco))
+    (assert (Edad Mas13))
+    (assert (Edad TP))
 )
- 
+
+(defrule createProfile::TP_Edad
+    (usuario {edad > 0})
+    	=>
+    (assert (Edad TP))
+)
+
 
 ;(defmodule ClassifyGames)
 ;Reglas definidas para ClassifyGames
