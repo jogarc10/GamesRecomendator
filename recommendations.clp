@@ -18,12 +18,6 @@
         (slot precio (type NUMBER))
 )
 
-(assert (juego(nombre Trivial)
-       (numeroJugadores MasDeDos)
-       (dificultad media)
-       (tiempoJuego mucho)
-       (precio 30)))
-
 (defrule createProfile::Poco_tiempo
     (usuario {tiempoJuego == poco})
         =>
@@ -105,6 +99,12 @@
     (assert (Edad TP))
 )
 
+
+(assert (juego(nombre Trivial)
+       (numeroJugadores MasDeDos)
+       (dificultad media)
+       (tiempoJuego mucho)
+       (precio 30)))
 
 /*
 (deffacts games
