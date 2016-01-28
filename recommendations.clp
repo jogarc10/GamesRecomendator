@@ -109,9 +109,17 @@
 (deftemplate juego
         (slot nombre (type SYMBOL))
         (slot numeroJugadores(Type SYMBOL)(allowed-values uno, dos, MasDeDos))
-        (slot dificultad (type SYMBOL)(allowed-values facil medio dificil))
+        (slot dificultad (type SYMBOL)(allowed-values facil media dificil))
         (slot tiempoJuego (type SYMBOL)(allowed-values poco medio mucho))
         (slot precio (type NUMBER))
+)
+
+(deffacts inicio
+    (juego (nombre Trivial)
+       (numeroJugadores MasDeDos)
+       (dificultad media)
+       (tiempoJuego mucho)
+       (precio 30))
 )
 
 ;(defmodule MatchUsersAndGames)
