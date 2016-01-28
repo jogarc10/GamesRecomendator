@@ -16,6 +16,24 @@
     	=>
     (assert (TipoJugador Fam_1_Poco))
 )
+
+(defrule createProfile::Fam_2_Poco
+    (usuario {tiempoJuego == poco})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == dos})
+    	=>
+    (assert (TipoJugador Fam_1_Poco))
+)
+
+(defrule createProfile::Fam_MasDos_Poco
+    (usuario {tiempoJuego == poco})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == MasDeDos})
+    	=>
+    (assert (TipoJugador Fam_1_Poco))
+)
+
+
  
 
 ;(defmodule ClassifyGames)
