@@ -3,16 +3,18 @@
 (deftemplate usuario
     (slot edad (type NUMBER))
     (slot tiempoJuego(type SYMBOL)(allowed-values poco medio mucho))
-    (slot dificultad(type SYMBOL)(allowed-values facil medio dificil))
+    (slot dificultad(type SYMBOL)(allowed-values facil media dificil))
     (slot aficion(type SYMBOL)(allowed-values salud, hogar, viajar, puzzles))
     (slot presupuesto (type NUMBER))
     (slot numeroJugadores(type SYMBOL)(allowed-values uno, dos, MasDeDos))
 )
 
-(defrule createProfile::Fam_1_poco
-	(numeroJugadores == uno)
-    =>
-    (assert(TipoJugador Fam_uno_poco)) 
+(defrule createProfile::Fam_1_Poco
+    (usuario {tiempoJuego == poco})
+    (usuario {aficion == hogar})
+    (usuario {numeroJugadores == uno})
+    	=>
+    (assert (TipoJugador Fam_1_Poco))
 )
  
 
