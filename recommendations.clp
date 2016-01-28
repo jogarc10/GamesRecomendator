@@ -9,20 +9,18 @@
     (slot numeroJugadores(type SYMBOL)(allowed-values uno, dos, MasDeDos))
 )
 
-
 (deftemplate juego
         (slot nombre (type SYMBOL))
+        (slot tipoJuego(type SYMBOL)(allowed-values deporte, inteligencia, aventura, familia))
         (slot numeroJugadores(Type SYMBOL)(allowed-values uno, dos, MasDeDos))
         (slot dificultad (type SYMBOL)(allowed-values facil media dificil))
         (slot tiempoJuego (type SYMBOL)(allowed-values poco medio mucho))
         (slot precio (type NUMBER))
 )
 
-(assert (juego(nombre Trivial)
-       (numeroJugadores MasDeDos)
-       (dificultad media)
-       (tiempoJuego mucho)
-       (precio 30)))
+/*********************************************
+************* Rules for the game *************
+*********************************************/
 
 (defrule createProfile::Poco_tiempo
     (usuario {tiempoJuego == poco})
@@ -63,25 +61,25 @@
 (defrule createProfile::Familia_aficcion
     (usuario {aficion == hogar})
         =>
-    (assert (TipoBuscado Familia))
+    (assert (TipoBuscado hogar))
 )
 
 (defrule createProfile::Deporte_aficcion
     (usuario {aficion == salud})
         =>
-    (assert (TipoBuscado Deporte))
+    (assert (TipoBuscado salud))
 )
 
 (defrule createProfile::Aventura_aficcion
     (usuario {aficion == viajar})
         =>
-    (assert (TipoBuscado Aventura))
+    (assert (TipoBuscado viajar))
 )
 
 (defrule createProfile::Inteligencia_aficcion
     (usuario {aficion == puzzles})
         =>
-    (assert (TipoBuscado Inteligencia))
+    (assert (TipoBuscado puzzles))
 )
 
 (defrule createProfile::Mas18_Edad
@@ -105,18 +103,26 @@
     (assert (Edad TP))
 )
 
+/*********************************************
+************* Facts of games *************
+*********************************************/
 
-/*
-(deffacts games
-    (createProfile::juego (nombre Trivial)
+;(defmodule ClassifyGames)
+;Reglas definidas para ClassifyGames
+
+(assert (juego(nombre Trivial)
+       (tipoJuego inteligencia)
        (numeroJugadores MasDeDos)
        (dificultad media)
        (tiempoJuego mucho)
-       (precio 30))
-)
-*/
-;(defmodule ClassifyGames)
-;Reglas definidas para ClassifyGames
+       (precio 30)))
+       
+(assert (juego(nombre SportTrivial)
+       (tipoJuego deporte)
+       (numeroJugadores MasDeDos)
+       (dificultad media)
+       (tiempoJuego mucho)
+       (precio 20)))
 
 ;(defmodule MatchUsersAndGames)
 ;Reglas definidas para MatchUsersAndGames
