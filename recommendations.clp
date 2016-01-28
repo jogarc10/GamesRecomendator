@@ -11,7 +11,7 @@
 
 (deftemplate juego
         (slot nombre (type SYMBOL))
-        (slot tipoJuego(type SYMBOL)(allowed-values deporte, inteligencia, aventura, familia))
+        (slot tipoJuego(Type SYMBOL)(allowed-values unteligencia, deporte, aventura, familiar))
         (slot numeroJugadores(Type SYMBOL)(allowed-values uno, dos, MasDeDos))
         (slot dificultad (type SYMBOL)(allowed-values facil media dificil))
         (slot tiempoJuego (type SYMBOL)(allowed-values poco medio mucho))
@@ -107,24 +107,104 @@
     (assert (Edad TP))
 )
 
-/*********************************************
-************* Facts of games *************
-*********************************************/
+/**********************************************
+**************** Classify games ***************
+***********************************************/
 
 ;(defmodule ClassifyGames)
 ;Reglas definidas para ClassifyGames
 
+; Juegos de inteligencia
+ 
+(assert (juego(nombre Damas)
+       (numeroJugadores dos)
+       (tipoJuego inteligencia)
+       (dificultad media)
+       (tiempoJuego medio)
+       (precio 30)))
+       
+(assert (juego(nombre Ajedrez)
+       (numeroJugadores dos)
+       (tipoJuego inteligencia)
+       (dificultad dificil)
+       (tiempoJuego mucho)
+       (precio 30)))
+       
 (assert (juego(nombre Trivial)
        (numeroJugadores MasDeDos)
+       (tipoJuego inteligencia)
        (dificultad media)
        (tiempoJuego mucho)
        (precio 30)))
        
+; Juegos Deportes
+
 (assert (juego(nombre SportTrivial)
        (numeroJugadores MasDeDos)
-       (dificultad media)
+       (tipoJuego deporte)
+       (dificultad dificil)
        (tiempoJuego mucho)
        (precio 20)))
+       
+(assert (juego(nombre PlayTennis)
+       (numeroJugadores dos)
+       (tipoJuego deporte)
+       (dificultad media)
+       (tiempoJuego poco)
+       (precio 18)))
+       
+(assert (juego(nombre Basket)
+       (numeroJugadores uno)
+       (tipoJuego deporte)
+       (dificultad facil)
+       (tiempoJuego poco)
+       (precio 18)))
+       
+; Juegos en familia
 
+(assert (juego(nombre Los Hombres Lobo de Castronegro)
+       (numeroJugadores MasDeDos)
+       (tipoJuego familiar)
+       (dificultad facil)
+       (tiempoJuego poco)
+       (precio 12)))
+       
+(assert (juego(nombre Monopoli)
+       (numeroJugadores MasDeDos)
+       (tipoJuego familiar)
+       (dificultad media)
+       (tiempoJuego medio)
+       (precio 39)))
+       
+(assert (juego(nombre Twister)
+       (numeroJugadores MasDeDos)
+       (tipoJuego familiar)
+       (dificultad dificil)
+       (tiempoJuego mucho)
+       (precio 10)))
+       
+; Juegos de aventura
+       
+(assert (juego(nombre The Walking dead)
+       (numeroJugadores dos)
+       (tipoJuego aventura)
+       (dificultad facil)
+       (tiempoJuego mucho)
+       (precio 12)))
+       
+(assert (juego(nombre Worldcraft)
+       (numeroJugadores MasDeDos)
+       (tipoJuego aventura)
+       (dificultad media)
+       (tiempoJuego medio)
+       (precio 17)))
+       
+(assert (juego(nombre Minecraft)
+       (numeroJugadores uno)
+       (tipoJuego aventura)
+       (dificultad favil)
+       (tiempoJuego mucho)
+       (precio 22)))
+       
 ;(defmodule MatchUsersAndGames)
 ;Reglas definidas para MatchUsersAndGames
