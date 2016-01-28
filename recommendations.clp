@@ -9,19 +9,6 @@
     (slot numeroJugadores(type SYMBOL)(allowed-values uno, dos, MasDeDos))
 )
 
-(defrule createProfile::time
-    (if {tiempoJuego == poco}) then
-        (assert (Tiempo Poco)
-    )
-)
-/*
-    (usuario {tiempoJuego == poco})
-    (usuario {tiempoJuego == medio})
-    (usuario {tiempoJuego == mucho})
-    =>
-    (assert (Tiempo Poco))
-    (assert (Tiempo medio))
-    (assert (Tiempo mucho))
 (defrule createProfile::Poco_tiempo
     (usuario {tiempoJuego == poco})
         =>
@@ -39,7 +26,7 @@
         =>
     (assert (Tiempo mucho))
 )
-*/
+
 (defrule createProfile::Un_Jugadores
     (usuario {numeroJugadores == uno})
         =>
