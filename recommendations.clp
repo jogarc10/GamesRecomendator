@@ -9,6 +9,21 @@
     (slot numeroJugadores(type SYMBOL)(allowed-values uno, dos, MasDeDos))
 )
 
+
+(deftemplate juego
+        (slot nombre (type SYMBOL))
+        (slot numeroJugadores(Type SYMBOL)(allowed-values uno, dos, MasDeDos))
+        (slot dificultad (type SYMBOL)(allowed-values facil media dificil))
+        (slot tiempoJuego (type SYMBOL)(allowed-values poco medio mucho))
+        (slot precio (type NUMBER))
+)
+
+(assert (juego(nombre Trivial)
+       (numeroJugadores MasDeDos)
+       (dificultad media)
+       (tiempoJuego mucho)
+       (precio 30)))
+
 (defrule createProfile::Poco_tiempo
     (usuario {tiempoJuego == poco})
         =>
@@ -91,23 +106,17 @@
 )
 
 
-;(defmodule ClassifyGames)
-;Reglas definidas para ClassifyGames
-(deftemplate juego
-        (slot nombre (type SYMBOL))
-        (slot numeroJugadores(Type SYMBOL)(allowed-values uno, dos, MasDeDos))
-        (slot dificultad (type SYMBOL)(allowed-values facil media dificil))
-        (slot tiempoJuego (type SYMBOL)(allowed-values poco medio mucho))
-        (slot precio (type NUMBER))
-)
-
-(deffacts inicio
-    (juego (nombre Trivial)
+/*
+(deffacts games
+    (createProfile::juego (nombre Trivial)
        (numeroJugadores MasDeDos)
        (dificultad media)
        (tiempoJuego mucho)
        (precio 30))
 )
+*/
+;(defmodule ClassifyGames)
+;Reglas definidas para ClassifyGames
 
 ;(defmodule MatchUsersAndGames)
 ;Reglas definidas para MatchUsersAndGames
