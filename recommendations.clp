@@ -11,7 +11,7 @@
 
 (deftemplate juego
         (slot nombre (type SYMBOL))
-        (slot tipoJuego(Type SYMBOL)(allowed-values unteligencia, deporte, aventura, familiar))
+        (slot tipoJuego(Type SYMBOL)(allowed-values inteligencia, deporte, aventura, familiar))
         (slot numeroJugadores(Type SYMBOL)(allowed-values uno, dos, MasDeDos))
         (slot dificultad (type SYMBOL)(allowed-values facil media dificil))
         (slot tiempoJuego (type SYMBOL)(allowed-values poco medio mucho))
