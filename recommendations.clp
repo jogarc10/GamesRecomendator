@@ -11,8 +11,8 @@
 
 (deftemplate juego
         (slot nombre (type SYMBOL))
-        (slot tipoJuego(Type SYMBOL)(allowed-values inteligencia, deporte, aventura, familiar))
-        (slot numeroJugadores(Type SYMBOL)(allowed-values uno, dos, MasDeDos))
+        (slot tipoJuego(Type SYMBOL)(allowed-values inteligencia deporte aventura familiar))
+        (slot numeroJugadores(Type SYMBOL)(allowed-values uno dos MasDeDos))
         (slot dificultad (type SYMBOL)(allowed-values facil media dificil))
         (slot tiempoJuego (type SYMBOL)(allowed-values poco medio mucho))
         (slot precio (type NUMBER))
@@ -117,11 +117,11 @@
 ; Juegos de inteligencia
  
 (assert (juego(nombre Damas)
-       (numeroJugadores dos)
-       (tipoJuego inteligencia)
-       (dificultad media)
-       (tiempoJuego medio)
-       (precio 30)))
+       	(tipoJuego inteligencia)
+       	(numeroJugadores dos)
+       	(dificultad media)
+       	(tiempoJuego medio)
+       	(precio 30)))
        
 (assert (juego(nombre Ajedrez)
        (numeroJugadores dos)
@@ -162,21 +162,21 @@
        
 ; Juegos en familia
 
-(assert (juego(nombre Los Hombres Lobo de Castronegro)
+(assert (juego(nombre "Los Hombres Lobo de Castronegro")
        (numeroJugadores MasDeDos)
        (tipoJuego familiar)
        (dificultad facil)
        (tiempoJuego poco)
        (precio 12)))
        
-(assert (juego(nombre Monopoli)
+(assert (juego(nombre "Monopoli")
        (numeroJugadores MasDeDos)
        (tipoJuego familiar)
        (dificultad media)
        (tiempoJuego medio)
        (precio 39)))
        
-(assert (juego(nombre Twister)
+(assert (juego(nombre "Twister")
        (numeroJugadores MasDeDos)
        (tipoJuego familiar)
        (dificultad dificil)
@@ -185,7 +185,7 @@
        
 ; Juegos de aventura
        
-(assert (juego(nombre The Walking dead)
+(assert (juego(nombre "The Walking dead")
        (numeroJugadores dos)
        (tipoJuego aventura)
        (dificultad facil)
@@ -202,7 +202,7 @@
 (assert (juego(nombre Minecraft)
        (numeroJugadores uno)
        (tipoJuego aventura)
-       (dificultad favil)
+       (dificultad facil)
        (tiempoJuego mucho)
        (precio 22)))
        
