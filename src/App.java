@@ -47,9 +47,9 @@ public class App {
 		//inputStr = in.nextLine();
 		f.setSlotValue("dificultad", new Value("media", RU.SYMBOL));
 		
-		//System.out.println("Elige tu aficción de entre las siguientes(): ");
+		//System.out.println("Elige tu aficción de entre las siguientes(hogar, puzzles, salud, viajar): ");
 		//inputStr = in.nextLine();
-		f.setSlotValue("aficion", new Value("hogar", RU.SYMBOL));
+		f.setSlotValue("aficion", new Value("puzzles", RU.SYMBOL));
 		
 		//System.out.println("Cual es tu presupuesto para el juego?: ");
 		//inputDouble = in.nextDouble();
