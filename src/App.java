@@ -61,14 +61,11 @@ public class App {
 		//inputStr = in.nextLine();
 		f.setSlotValue("numeroJugadores", new Value("uno", RU.SYMBOL));
 		
+
 		r.assertFact(f);
 		
 		r.run();
 		r.eval("(facts)");
-		
-		
-		//r.setFocus("ClassifyGames");
-		//r.run();
 		
 		
 		//r.setFocus("MatchUsersAndGames");

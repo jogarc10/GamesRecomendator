@@ -18,45 +18,20 @@
         (slot precio (type NUMBER))
     	(slot edadRecomendada (type SYMBOL) (allowed-values TP Mas13 Mas18))
 )
-
 /*********************************************
 ************* Rules for the game *************
 *********************************************/
 
-(defrule createProfile::Poco_tiempo
-    (usuario {tiempoJuego == poco})
+(defrule createProfile::Tiempo
+    (usuario (tiempoJuego  ?T))
         =>
-    (assert (Tiempo poco))
+    (assert (Tiempo ?T))
 )
 
-(defrule createProfile::Medio_tiempo
-    (usuario {tiempoJuego == medio})
+(defrule createProfile::Jugadores
+    (usuario (numeroJugadores ?n))
         =>
-    (assert (Tiempo medio))
-)
-
-(defrule createProfile::Mucho_tiempo
-    (usuario {tiempoJuego == mucho})
-        =>
-    (assert (Tiempo mucho))
-)
-
-(defrule createProfile::Un_Jugadores
-    (usuario {numeroJugadores == uno})
-        =>
-    (assert (Jugadores uno))
-)
-
-(defrule createProfile::Dos_Jugadores
-    (usuario {numeroJugadores == dos})
-        =>
-    (assert (Jugadores dos))
-)
-
-(defrule createProfile::MasDos_Jugadores
-    (usuario {numeroJugadores == MasDos})
-        =>
-    (assert (Jugadores MasDos))
+    (assert (Jugadores ?n))
 )
 
 (defrule createProfile::Familia_aficcion
@@ -104,23 +79,11 @@
     (assert (Edad TP))
 )
 
-(defrule createProfile::Dificultad_Facil
-    (usuario {dificultad == facil})
+(defrule createProfile::Dificultad
+    (usuario (dificultad ?d))
     =>
-    (assert (Dificultad facil))
- )
-
-(defrule createProfile::Dificultad_Media
-    (usuario {dificultad == media})
-    =>
-    (assert (Dificultad media))
- )
-
-(defrule createProfile::Dificultad_Dificil
-    (usuario {dificultad == dificil})
-    =>
-    (assert (Dificultad dificil))
- )
+    (assert (Dificultad ?d))
+)
 
 (defrule createProfile::Presupuesto
  (usuario (presupuesto ?p))
@@ -134,7 +97,8 @@
 
 ;(defmodule ClassifyGames)
 ;Reglas definidas para ClassifyGames
- 
+/*nombre, tipoJuego, numeroJugadores, dificultad, tiempoJuego, precio, edadRecomendada*/
+
 ; Juegos de inteligencia
 (assert (juego(nombre "Damas")
        	(tipoJuego inteligencia)
@@ -158,10 +122,9 @@
        	(dificultad media)
        	(tiempoJuego mucho)
        	(precio 30)
-        (edadRecomendada Mas13)))
-       
-; Juegos Deportes
+        (edadRecomendada Mas13)))         
 
+    ; Juegos Deportes
 (assert (juego(nombre "SportTrivial")
        	(numeroJugadores MasDeDos)
        	(tipoJuego deporte)
@@ -185,9 +148,8 @@
        	(tiempoJuego poco)
        	(precio 18)
         (edadRecomendada Mas13)))
-       
-; Juegos en familia
 
+    ; Juegos en familia
 (assert (juego(nombre "Los Hombres Lobo de Castronegro")
        	(numeroJugadores MasDeDos)
        	(tipoJuego familiar)
@@ -212,8 +174,7 @@
        	(precio 10)
         (edadRecomendada Mas13)))
        
-; Juegos de aventura
-       
+    ; Juegos de aventura   
 (assert (juego(nombre "The Walking dead")
        	(numeroJugadores dos)
        	(tipoJuego aventura)
@@ -221,7 +182,7 @@
        	(tiempoJuego mucho)
        	(precio 12)
         (edadRecomendada Mas18)))
-       
+
 (assert (juego(nombre "Worldcraft")
        (numeroJugadores MasDeDos)
        (tipoJuego aventura)
@@ -244,9 +205,9 @@
        (dificultad media)
        (tiempoJuego poco)
        (precio 22)
-       (edadRecomendada TP))) 
+       (edadRecomendada TP)))  
 
-/*nombre, tipoJuego, numeroJugadores, dificultad, tiempoJuego, precio, edadRecomendada*/
+
 (defrule createProfile::Recommendation
     (Dificultad ?d)
     (Jugadores ?j)
