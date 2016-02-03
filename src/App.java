@@ -15,6 +15,7 @@ public class App {
 		double inputDouble;
 		int inputInt = 0;
 		String inputStr = "";
+		String confirmation = "y";
 		Scanner in = new Scanner(System.in);
 		
 		try{
@@ -24,10 +25,11 @@ public class App {
 			System.out.println("Error de lectura en " + ficheroReglas); 
 			je0.printStackTrace();
 		}
-
+		while(confirmation == "y"){
+		r.reset();
 
 		//Cada una de estas tres partes carga el módulo necesario del archivo recommendations.clp
-		r.setFocus("createProfile");
+		//r.setFocus("createProfile");
 		
 		//r.eval("deftemplate usuario (slot edad (type NUMBER)) (slot tiempoJuego(type NUMBER)(allowed-values poco medio mucho)) (slot dificultad(type SYMBOL)(allowed-values facil medio dificil)) (slot aficion(type SYMBOL)(allowed-values salud, hogar, viajar, puzzles)) (slot presupuesto (type NUMBER)) (slot NumeroJugadores(type SYMBOL)(allowed-values uno, dos, mas de dos))");
 		
@@ -67,9 +69,17 @@ public class App {
 		r.run();
 		r.eval("(facts)");
 		
-		
-		//r.setFocus("MatchUsersAndGames");
-		//r.run();
+		/*System.out.println("Quieres seguir pidiendo recomendaciones?(y,n): ");
+		inputStr = in.nextLine();
+		System.out.println(inputStr);
+		if(inputStr.equals("y") || inputStr.equals("n")){
+			confirmation = inputStr;
+		}
+		else{
+			System.out.println("Error, cerrando el programa");
+			confirmation = "n";
+		}*/
+		}
 	
 	}
 
