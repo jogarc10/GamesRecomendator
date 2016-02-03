@@ -1,6 +1,6 @@
-;(defmodule createProfile)
+(defmodule createProfile)
 ;Reglas definidas para ClassifyUser
-(deftemplate usuario
+(deftemplate createProfile::usuario
     (slot edad (type NUMBER))
     (slot tiempoJuego(type SYMBOL)(allowed-values poco medio mucho))
     (slot dificultad(type SYMBOL)(allowed-values facil media dificil))
@@ -9,7 +9,78 @@
     (slot numeroJugadores(type SYMBOL)(allowed-values uno dos MasDeDos))
 )
 
-(deftemplate juego
+(defrule createProfile::Tiempo
+    (createProfile::usuario (tiempoJuego  ?T))
+        =>
+    (assert (Tiempo ?T))
+)
+
+(defrule createProfile::Jugadores
+    (createProfile::usuario (numeroJugadores ?n))
+        =>
+    (assert (Jugadores ?n))
+)
+
+(defrule createProfile::Familia_aficcion
+    (createProfile::usuario {aficion == hogar})
+        =>
+    (assert (TipoBuscado familiar))
+)
+
+(defrule createProfile::Deporte_aficcion
+    (createProfile::usuario {aficion == salud})
+        =>
+    (assert (TipoBuscado deporte))
+)
+
+(defrule createProfile::Aventura_aficcion
+    (createProfile::usuario {aficion == viajar})
+        =>
+    (assert (TipoBuscado aventura))
+)
+
+(defrule createProfile::Inteligencia_aficcion
+    (createProfile::usuario {aficion == puzzles})
+        =>
+    (assert (TipoBuscado inteligencia))
+)
+
+(defrule createProfile::Mas18_Edad
+    (createProfile::usuario {edad > 18})
+        =>
+    (assert (Edad Mas18))
+    (assert (Edad Mas13))
+    (assert (Edad TP))
+)
+
+(defrule createProfile::Mas13_Edad
+    (createProfile::usuario {edad > 13})
+        =>
+    (assert (Edad Mas13))
+    (assert (Edad TP))
+)
+
+(defrule createProfile::TP_Edad
+    (createProfile::usuario {edad > 0})
+        =>
+    (assert (Edad TP))
+)
+
+(defrule createProfile::Dificultad
+    (createProfile::usuario (dificultad ?d))
+    =>
+    (assert (Dificultad ?d))
+)
+
+(defrule createProfile::Presupuesto
+ (createProfile::usuario (presupuesto ?p))
+    =>   
+ (assert(Presupuesto ?p))
+ )
+
+(defmodule ClassifyGames)
+
+(deftemplate ClassifyGames::juego
         (slot nombre (type SYMBOL))
         (slot tipoJuego(Type SYMBOL)(allowed-values inteligencia deporte aventura familiar))
         (slot numeroJugadores(Type SYMBOL)(allowed-values uno dos MasDeDos))
@@ -19,13 +90,7 @@
     	(slot edadRecomendada (type SYMBOL) (allowed-values TP Mas13 Mas18))
 )
 
-(deftemplate Recomendation
- 	(slot nombreJuego (type SYMBOL))   
- )
-/*********************************************
-************* Rules for the game *************
-*********************************************/
-(deffacts juegos
+(deffacts ClassifyGames::juegos
 	"Lista de juegos en la base de datos"
     ; Juegos de inteligencia
 (juego(nombre "Damas")
@@ -137,98 +202,23 @@
 	)
 
 
-(defrule Tiempo
-    (usuario (tiempoJuego  ?T))
-        =>
-    (assert (Tiempo ?T))
-)
+(defmodule MatchUsersAndGames)
 
-(defrule Jugadores
-    (usuario (numeroJugadores ?n))
-        =>
-    (assert (Jugadores ?n))
-)
-
-(defrule Familia_aficcion
-    (usuario {aficion == hogar})
-        =>
-    (assert (TipoBuscado familiar))
-)
-
-(defrule Deporte_aficcion
-    (usuario {aficion == salud})
-        =>
-    (assert (TipoBuscado deporte))
-)
-
-(defrule Aventura_aficcion
-    (usuario {aficion == viajar})
-        =>
-    (assert (TipoBuscado aventura))
-)
-
-(defrule Inteligencia_aficcion
-    (usuario {aficion == puzzles})
-        =>
-    (assert (TipoBuscado inteligencia))
-)
-
-(defrule Mas18_Edad
-    (usuario {edad > 18})
-        =>
-    (assert (Edad Mas18))
-    (assert (Edad Mas13))
-    (assert (Edad TP))
-)
-
-(defrule Mas13_Edad
-    (usuario {edad > 13})
-        =>
-    (assert (Edad Mas13))
-    (assert (Edad TP))
-)
-
-(defrule TP_Edad
-    (usuario {edad > 0})
-        =>
-    (assert (Edad TP))
-)
-
-(defrule Dificultad
-    (usuario (dificultad ?d))
-    =>
-    (assert (Dificultad ?d))
-)
-
-(defrule Presupuesto
- (usuario (presupuesto ?p))
-    =>   
- (assert(Presupuesto ?p))
+(deftemplate MatchUsersAndGames::Recomendation
+ 	(slot nombreJuego (type SYMBOL))   
  )
 
-/**********************************************
-**************** Classify games ***************
-***********************************************/
-
-;(defmodule ClassifyGames)
-;Reglas definidas para ClassifyGames
-/*nombre, tipoJuego, numeroJugadores, dificultad, tiempoJuego, precio, edadRecomendada*/
-
-  
-
-
-(defrule RecommendationGame
-    (Dificultad ?d)
-    (Jugadores ?j)
-    (Presupuesto ?p)
-    (Tiempo ?t)
-    (TipoBuscado ?b)
-    (Edad ?e)
-    (juego (nombre ?n)(tipoJuego ?b)(numeroJugadores ?j)(dificultad ?d)(tiempoJuego ?t)(precio ?p2)(edadRecomendada ?e))
+(defrule MatchUsersAndGames::RecommendationGame
+    (createProfile::Dificultad ?d)
+    (createProfile::Jugadores ?j)
+    (createProfile::Presupuesto ?p)
+    (createProfile::Tiempo ?t)
+    (createProfile::TipoBuscado ?b)
+    (createProfile::Edad ?e)
+    (ClassifyGames::juego (nombre ?n)(tipoJuego ?b)(numeroJugadores ?j)(dificultad ?d)(tiempoJuego ?t)(precio ?p2)(edadRecomendada ?e))
     (test (> ?p ?p2 ))
     =>
     (assert(Recomendation (nombreJuego ?n)))
  )
  
-;(defmodule MatchUsersAndGames)
 ;Reglas definidas para MatchUsersAndGames
