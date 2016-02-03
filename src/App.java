@@ -25,13 +25,10 @@ public class App {
 			System.out.println("Error de lectura en " + ficheroReglas); 
 			je0.printStackTrace();
 		}
-		while(confirmation == "y"){
-		r.reset();
-
-		//Cada una de estas tres partes carga el módulo necesario del archivo recommendations.clp
-		//r.setFocus("createProfile");
+		//while(confirmation == "y"){
 		
-		//r.eval("deftemplate usuario (slot edad (type NUMBER)) (slot tiempoJuego(type NUMBER)(allowed-values poco medio mucho)) (slot dificultad(type SYMBOL)(allowed-values facil medio dificil)) (slot aficion(type SYMBOL)(allowed-values salud, hogar, viajar, puzzles)) (slot presupuesto (type NUMBER)) (slot NumeroJugadores(type SYMBOL)(allowed-values uno, dos, mas de dos))");
+		//r.setFocus("createProfile");
+		r.reset();
 		
 		Fact f = new Fact("usuario", r); 
 		
@@ -69,6 +66,8 @@ public class App {
 		r.run();
 		r.eval("(facts)");
 		
+		
+		
 		/*System.out.println("Quieres seguir pidiendo recomendaciones?(y,n): ");
 		inputStr = in.nextLine();
 		System.out.println(inputStr);
@@ -81,6 +80,6 @@ public class App {
 		}*/
 		}
 	
-	}
+	//}
 
 }
