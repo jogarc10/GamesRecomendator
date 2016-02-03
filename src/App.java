@@ -30,38 +30,37 @@ public class App {
 		}
 		while(confirmation == 1){
 		
-		//r.setFocus("createProfile");
 		r.reset();
 		
 		Fact f = new Fact("usuario", r); 
 		
-		//System.out.println("Cuantos años tienes?: ");
-		//inputInt = in.nextInt();
-		f.setSlotValue("edad", new Value(20, RU.INTEGER)); 
+		System.out.println("Cuantos años tienes?: ");
+		inputInt = in.nextInt();
+		f.setSlotValue("edad", new Value(inputInt, RU.INTEGER)); 
 		
-		//tmp = in.nextLine();
+		tmp = in.nextLine();
 		
-		//System.out.println("Cuanto tiempo quieres dedicarle al juego?(poco, medio, mucho): ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("tiempoJuego", new Value("poco", RU.SYMBOL));
+		System.out.println("Cuanto tiempo quieres dedicarle al juego?(poco, medio, mucho): ");
+		inputStr = in.nextLine();
+		f.setSlotValue("tiempoJuego", new Value(inputStr, RU.SYMBOL));
 		
-		//System.out.println("De que dificultad quieres el juego?(facil, media, dificil): ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("dificultad", new Value("media", RU.SYMBOL));
+		System.out.println("De que dificultad quieres el juego?(facil, media, dificil): ");
+		inputStr = in.nextLine();
+		f.setSlotValue("dificultad", new Value(inputStr, RU.SYMBOL));
 		
-		//System.out.println("Elige tu aficción de entre las siguientes(hogar, puzzles, salud, viajar): ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("aficion", new Value("puzzles", RU.SYMBOL));
+		System.out.println("Elige tu aficción de entre las siguientes(hogar, puzzles, salud, viajar): ");
+		inputStr = in.nextLine();
+		f.setSlotValue("aficion", new Value(inputStr, RU.SYMBOL));
 		
-		//System.out.println("Cual es tu presupuesto para el juego?: ");
-		//inputInt = in.nextInt();
-		f.setSlotValue("presupuesto", new Value(100, RU.INTEGER));
+		System.out.println("Cual es tu presupuesto para el juego?: ");
+		inputInt = in.nextInt();
+		f.setSlotValue("presupuesto", new Value(inputInt, RU.INTEGER));
 		
-		//tmp = in.nextLine();
+		tmp = in.nextLine();
 		
-		//System.out.println("De cuantos jugadores quieres el juego?(uno, dos, MasDeDos): ");
-		//inputStr = in.nextLine();
-		f.setSlotValue("numeroJugadores", new Value("uno", RU.SYMBOL));
+		System.out.println("De cuantos jugadores quieres el juego?(uno, dos, MasDeDos): ");
+		inputStr = in.nextLine();
+		f.setSlotValue("numeroJugadores", new Value(inputStr, RU.SYMBOL));
 		
 
 		r.assertFact(f);
