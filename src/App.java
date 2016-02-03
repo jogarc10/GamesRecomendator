@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.Scanner;
 
 import jess.Fact;
@@ -8,6 +9,8 @@ import jess.Value;
 
 
 public class App {
+	static final int MAX = 20;
+	
 	public static void main(String[] args) throws JessException {
 		String ficheroReglas = "recommendations.clp";
 		Rete r = new Rete();
@@ -16,6 +19,7 @@ public class App {
 		String inputStr = "";
 		int confirmation = 1;
 		Scanner in = new Scanner(System.in);
+		
 		
 		try{
 			Value v = r.batch(ficheroReglas);
@@ -65,6 +69,8 @@ public class App {
 		r.run();
 		r.eval("(facts)");
 		
+		extractRecomendations(r);
+		
 		System.out.println("Quieres seguir pidiendo recomendaciones? 1(si), 0(no): ");
 		inputInt = in.nextInt();
 		System.out.println(inputStr);
@@ -76,7 +82,25 @@ public class App {
 			confirmation = 0;
 		}
 		}
+	}
 	
+	public static void extractRecomendations(Rete r){
+		Iterator<Fact> i = r.listFacts();
+		int numeroJuegos = 0;
+		Value recomen;
+		System.out.println("La lista de juegos recomendados para ti son:");
+		while(i.hasNext() && numeroJuegos < MAX){
+			Fact fact = i.next();
+			if(fact.getName().equals("MAIN::Recomendation")){
+				++numeroJuegos;
+				try{
+					recomen = fact.getSlotValue("nombreJuego");
+					System.out.println(recomen);
+				}catch(JessException excep){
+					excep.printStackTrace();
+				}
+			}
+		}
+	}
 	}
 
-}

@@ -18,6 +18,10 @@
         (slot precio (type NUMBER))
     	(slot edadRecomendada (type SYMBOL) (allowed-values TP Mas13 Mas18))
 )
+
+(deftemplate Recomendation
+ 	(slot nombreJuego (type SYMBOL))   
+ )
 /*********************************************
 ************* Rules for the game *************
 *********************************************/
@@ -213,7 +217,7 @@
   
 
 
-(defrule Recommendation
+(defrule RecommendationGame
     (Dificultad ?d)
     (Jugadores ?j)
     (Presupuesto ?p)
@@ -223,7 +227,7 @@
     (juego (nombre ?n)(tipoJuego ?b)(numeroJugadores ?j)(dificultad ?d)(tiempoJuego ?t)(precio ?p2)(edadRecomendada ?e))
     (test (> ?p ?p2 ))
     =>
-    (assert(Recomendacion ?n))
+    (assert(Recomendation (nombreJuego ?n)))
  )
  
 ;(defmodule MatchUsersAndGames)
