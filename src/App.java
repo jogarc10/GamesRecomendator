@@ -12,10 +12,9 @@ public class App {
 		String ficheroReglas = "recommendations.clp";
 		Rete r = new Rete();
 		String tmp;
-		double inputDouble;
 		int inputInt = 0;
 		String inputStr = "";
-		String confirmation = "y";
+		int confirmation = 1;
 		Scanner in = new Scanner(System.in);
 		
 		try{
@@ -25,7 +24,7 @@ public class App {
 			System.out.println("Error de lectura en " + ficheroReglas); 
 			je0.printStackTrace();
 		}
-		//while(confirmation == "y"){
+		while(confirmation == 1){
 		
 		//r.setFocus("createProfile");
 		r.reset();
@@ -51,7 +50,7 @@ public class App {
 		f.setSlotValue("aficion", new Value("puzzles", RU.SYMBOL));
 		
 		//System.out.println("Cual es tu presupuesto para el juego?: ");
-		//inputDouble = in.nextDouble();
+		//inputInt = in.nextInt();
 		f.setSlotValue("presupuesto", new Value(100, RU.INTEGER));
 		
 		//tmp = in.nextLine();
@@ -66,20 +65,18 @@ public class App {
 		r.run();
 		r.eval("(facts)");
 		
-		
-		
-		/*System.out.println("Quieres seguir pidiendo recomendaciones?(y,n): ");
-		inputStr = in.nextLine();
+		System.out.println("Quieres seguir pidiendo recomendaciones? 1(si), 0(no): ");
+		inputInt = in.nextInt();
 		System.out.println(inputStr);
-		if(inputStr.equals("y") || inputStr.equals("n")){
-			confirmation = inputStr;
+		if(inputInt == 1 || inputInt == 0){
+			confirmation = inputInt;
 		}
 		else{
 			System.out.println("Error, cerrando el programa");
-			confirmation = "n";
-		}*/
+			confirmation = 0;
+		}
 		}
 	
-	//}
+	}
 
 }
