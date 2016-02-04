@@ -66,7 +66,6 @@ public class App {
 		r.assertFact(f);
 		
 		r.run();
-		r.eval("(facts)");
 		
 		extractRecomendations(r);
 		
