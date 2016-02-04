@@ -99,6 +99,9 @@ public class App {
 				}
 			}
 		}
+		if(numeroJuegos == 0){
+			System.out.println("Lo sentimos no tenemos ningun juego que cimpla tus peticiones");
+		}
 	}
 	}
 
